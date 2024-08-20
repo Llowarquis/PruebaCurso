@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using PrimerProyecto.Components;
 using PrimerProyecto.DAL;
+using PrimerProyecto.Models;
+using PrimerProyecto.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,7 @@ var ConStr = builder.Configuration.GetConnectionString("ConStr");
 builder.Services.AddDbContext<Contexto>(o => o.UseSqlite(ConStr));
 
 // Inyeccion del Servicio
-builder.Services.AddDbContext<Contexto>(o => o.UseSqlite(ConStr));
+builder.Services.AddScoped<EstudianteService>();
 
 
 
